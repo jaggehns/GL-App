@@ -1,5 +1,5 @@
 import React, { FC, useState, useEffect } from 'react'
-import { Box, CircularProgress, Grid, LinearProgress } from '@material-ui/core'
+import { Box, Grid, LinearProgress } from '@material-ui/core'
 import { PokemonList } from '../../config/api'
 import axios from 'axios'
 import { IPokemonList } from '../../interfaces/IPokemonList'
@@ -9,6 +9,7 @@ import { makeStyles } from '@material-ui/styles'
 import { IMAGE_API_URL } from '../../config/constants'
 import { IFinalPokemonList } from '../../interfaces/IFinalPokemonList'
 
+/* eslint-disable @typescript-eslint/no-unused-vars */
 const useStyles = makeStyles(theme => ({
   pagination: {
     '& .MuiPaginationItem-root': {
@@ -39,6 +40,7 @@ const PokeContainer: FC = () => {
         //thus have to manually construct an array with
         //images from a different source + original data
         const { results } = response.data
+        // eslint-disable-next-line
         const newPokemonData: any = []
         results.forEach((pokemon: IPokemonList, index: number) => {
           index++

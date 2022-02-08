@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC } from 'react'
 import { Card, CardContent, CardMedia, Grid, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 
@@ -8,6 +8,7 @@ interface Props {
   image: string
 }
 
+/* eslint-disable @typescript-eslint/no-unused-vars */
 const useStyles = makeStyles(theme => ({
   card: {
     cursor: 'pointer',
@@ -27,7 +28,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const PokemonCard: FC<Props> = ({ singlePokemon, index, image }) => {
+const PokemonCard: FC<Props> = ({ singlePokemon, image }) => {
   const classes = useStyles()
 
   return (
