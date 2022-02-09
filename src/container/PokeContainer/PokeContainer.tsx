@@ -38,7 +38,7 @@ const PokeContainer: FC = () => {
         //images from a different source + original data
         // eslint-disable-next-line
         const results = response.results
-        const newPokemonData: any = []
+        const newPokemonData: IFinalPokemonList[] = []
         results.forEach((pokemon: IPokemonList, index: number) => {
           index++
           const pokemonObject = {
