@@ -1,14 +1,12 @@
 import React, { FC, useState, useEffect } from 'react'
 import { Box, Grid, LinearProgress } from '@material-ui/core'
-import { PokemonList } from '../../config/api'
-import axios from 'axios'
+import { PokemonApi } from '../../config/api'
 import { IPokemonList } from '../../interfaces/IPokemonList'
 import PokemonCard from '../../components/PokemonCard/PokemonCard'
 import { Pagination } from '@material-ui/lab'
 import { makeStyles } from '@material-ui/styles'
 import { IMAGE_API_URL } from '../../config/constants'
 import { IFinalPokemonList } from '../../interfaces/IFinalPokemonList'
-
 /* eslint-disable @typescript-eslint/no-unused-vars */
 const useStyles = makeStyles(theme => ({
   pagination: {
@@ -33,14 +31,13 @@ const PokeContainer: FC = () => {
   const [page, setPage] = useState<number>(1)
   const getPokemonList = () => {
     setLoading(true)
-    axios
-      .get(PokemonList(), { timeout: 30000 })
+    PokemonApi()
       .then(response => {
         //API does not come with images
         //thus have to manually construct an array with
         //images from a different source + original data
-        const { results } = response.data
         // eslint-disable-next-line
+        const results = response.results
         const newPokemonData: any = []
         results.forEach((pokemon: IPokemonList, index: number) => {
           index++
@@ -54,8 +51,7 @@ const PokeContainer: FC = () => {
         setPokemonList(newPokemonData)
         setLoading(false)
       })
-      .catch(err => {
-        console.log(err)
+      .catch(e => {
         setError(true)
         setLoading(false)
       })
