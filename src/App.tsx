@@ -10,7 +10,8 @@ function App() {
       backgroundColor: '#14161a',
       color: 'white',
       minHeight: '100vh',
-      maxWidth: '100%',
+      maxWidth: '100vw',
+      overflowX: 'hidden',
     },
   }))
 
